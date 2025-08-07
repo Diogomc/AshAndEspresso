@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Diogo\\Desktop\\AshAndEspresso\\AshAndEspresso\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4CA572B2-3C80-4549-876F-7CF687066717}|AshAndEspresso\\AshAndEspresso.csproj|c:\\users\\diogo\\desktop\\ashandespresso\\ashandespresso\\ashandespresso\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CA572B2-3C80-4549-876F-7CF687066717}|AshAndEspresso\\AshAndEspresso.csproj|solutionrelative:ashandespresso\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CA572B2-3C80-4549-876F-7CF687066717}|AshAndEspresso\\AshAndEspresso.csproj|c:\\users\\diogo\\desktop\\ashandespresso\\ashandespresso\\ashandespresso\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CA572B2-3C80-4549-876F-7CF687066717}|AshAndEspresso\\AshAndEspresso.csproj|solutionrelative:ashandespresso\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\Diogo\\Desktop\\AshAndEspresso\\AshAndEspresso\\AshAndEspresso\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "AshAndEspresso\\Models\\Category.cs",
+              "ToolTip": "C:\\Users\\Diogo\\Desktop\\AshAndEspresso\\AshAndEspresso\\AshAndEspresso\\Models\\Category.cs",
+              "RelativeToolTip": "AshAndEspresso\\Models\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T01:41:16.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\Diogo\\Desktop\\AshAndEspresso\\AshAndEspresso\\AshAndEspresso\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "AshAndEspresso\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\Diogo\\Desktop\\AshAndEspresso\\AshAndEspresso\\AshAndEspresso\\Models\\Product.cs",
+              "RelativeToolTip": "AshAndEspresso\\Models\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T01:37:04.945Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
