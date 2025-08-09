@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AshAndEspresso.Models;
 
-[Table("Categories")]
 public class Category
 {
     public Category()
