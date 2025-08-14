@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace AshAndEspresso.Models;
 
@@ -14,5 +15,6 @@ public class Category
     public string? Name { get; set; }
     public string? Description { get; set; }
 
+    [JsonIgnore]
     public ICollection<Product> Product { get; set; }
 }
