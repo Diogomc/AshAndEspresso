@@ -1,31 +1,30 @@
 ﻿using AshAndEspresso.Models;
 using AshAndEspresso.Repositories;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AshAndEspresso.Controllers;
 
 [ApiController]
-[Route("api/controller")]
+[Route("api/[controller]")]
 public class ProductsController : ControllerBase
 {
-    private readonly IRepository<Product> _repository;
+    private readonly IUnitOfWork _uow;
 
-    public ProductsController(IRepository<Product> repository)
+    public ProductsController(IUnitOfWork uow)
     {
-        _repository = repository;
+        _uow = uow;
     }
 
     [HttpGet]
     public ActionResult<IEnumerable<Product>> Get()
     {
-        return _repository.GetAll().ToList();
+        return _uow.ProductRepository.GetAll().ToList();
     }
 
     [HttpGet("{id:int}", Name="TakeProduct")]
     public ActionResult GetProductById(int id)
     {
-        var product = _repository.GetId(p => p.ProductId == id);
+        var product = _uow.ProductRepository.GetId(p => p.ProductId == id);
         if(id != product.ProductId)
         {
             return NotFound("Product is not found");
@@ -36,21 +35,23 @@ public class ProductsController : ControllerBase
     [HttpPost]
     public ActionResult Post(Product product)
     {
-        var createProduct = _repository.Create(product);
+        var createProduct = _uow.ProductRepository.Create(product);
+        _uow.Commit();
         return new CreatedAtRouteResult("TakeProduct",
-            new { product.ProductId }, createProduct);
+            new { id = product.ProductId }, createProduct);
     }
 
     [HttpDelete("{id:int}")]
 
     public ActionResult Delete(int id)
     {
-        var getProductId = _repository.GetId(p => p.ProductId == id);
+        var getProductId = _uow.ProductRepository.GetId(p => p.ProductId == id);
         if(id != getProductId.ProductId)
         {
             return NotFound("Product not found");
         }
-        _repository.Delete(getProductId);
+        _uow.ProductRepository.Delete(getProductId);
+        _uow.Commit();
         return Ok(getProductId);
     }
 
@@ -61,7 +62,8 @@ public class ProductsController : ControllerBase
         {
             return NotFound("Product not found");
         }
-        _repository.Update(product);
+        _uow.ProductRepository.Update(product);
+        _uow.Commit();
         return Ok(product);
     }
 }

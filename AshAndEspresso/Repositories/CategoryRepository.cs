@@ -5,8 +5,7 @@ namespace AshAndEspresso.Repositories;
 
 public class CategoryRepository : Repository<Category>, ICategoryRepository
 {
-    public CategoryRepository(AppDbContext context) : base(context)
+    public CategoryRepository(AppDbContext repository) : base(repository)
     {
-
     }
 }

@@ -9,39 +9,41 @@ namespace AshAndEspresso.Controllers
     [Route("api/[controller]")]
     public class CategoryController : ControllerBase
     {
-        private readonly IRepository<Category> _repository;
+        private readonly IUnitOfWork _uow;
 
-        public CategoryController(IRepository<Category> repository)
+        public CategoryController(IUnitOfWork uow)
         {
-            _repository = repository;
+            _uow = uow;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<Category>> GetCategory()
         {
-            var categories = _repository.GetAll().ToList();
-            return Ok(categories);
+            return _uow.CategoryRepository.GetAll().ToList();
         }
 
         [HttpGet("{id:int}", Name = "TakeCategory")]
         public ActionResult GetCategoryId(int id)
         {
-            var repository = _repository.GetId(c => c.CategoryId == id);
+            var repository = _uow.CategoryRepository.GetId(c => c.CategoryId == id);
             return Ok(repository);
         }
         [HttpPost]
         public ActionResult Post(Category category)
         {
-           var createCategory = _repository.Create(category);
+           var createCategory = _uow.CategoryRepository.Create(category);
+            _uow.Commit();
             return new CreatedAtRouteResult("TakeCategory",
                 new { id = createCategory.CategoryId }, createCategory);
+
             
         }
         [HttpDelete("{id:int}")]
         public ActionResult Delete(int id)
         {
-            var getCategoryId = _repository.GetId(c => c.CategoryId == id);
-            _repository.Delete(getCategoryId);
+            var getCategoryId = _uow.CategoryRepository.GetId(c => c.CategoryId == id);
+            _uow.CategoryRepository.Delete(getCategoryId);
+            _uow.Commit();
 
             return Ok(getCategoryId);
 
@@ -53,7 +55,8 @@ namespace AshAndEspresso.Controllers
             {
                 return NotFound("Category not found");
             }
-            _repository.Update(category);
+            _uow.CategoryRepository.Update(category);
+            _uow.Commit();
             return Ok(category);
         }
     }

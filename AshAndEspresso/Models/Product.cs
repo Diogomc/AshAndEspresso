@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace AshAndEspresso.Models;
 
@@ -12,5 +13,6 @@ public class Product
     public int? AvailableQuantity { get; set; }
 
     public int CategoryId { get; set; }
-    public Category Categories { get; set; }
+    [JsonIgnore]
+    public Category? Categories { get; set; }
 }

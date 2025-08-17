@@ -92,7 +92,7 @@
   {
     "ContainingType": "AshAndEspresso.Controllers.ProductsController",
     "Method": "Get",
-    "RelativePath": "api/controller",
+    "RelativePath": "api/Products",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -112,7 +112,7 @@
   {
     "ContainingType": "AshAndEspresso.Controllers.ProductsController",
     "Method": "Post",
-    "RelativePath": "api/controller",
+    "RelativePath": "api/Products",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -128,7 +128,7 @@
   {
     "ContainingType": "AshAndEspresso.Controllers.ProductsController",
     "Method": "GetProductById",
-    "RelativePath": "api/controller/{id}",
+    "RelativePath": "api/Products/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -145,7 +145,7 @@
   {
     "ContainingType": "AshAndEspresso.Controllers.ProductsController",
     "Method": "Delete",
-    "RelativePath": "api/controller/{id}",
+    "RelativePath": "api/Products/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -161,7 +161,7 @@
   {
     "ContainingType": "AshAndEspresso.Controllers.ProductsController",
     "Method": "Put",
-    "RelativePath": "api/controller/{id}",
+    "RelativePath": "api/Products/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,

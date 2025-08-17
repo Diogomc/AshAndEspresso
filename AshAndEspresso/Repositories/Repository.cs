@@ -1,47 +1,41 @@
 ﻿using AshAndEspresso.Context;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
 
 namespace AshAndEspresso.Repositories;
 
 public class Repository<T> : IRepository<T> where T : class
 {
-    public readonly AppDbContext _context;
-    public Repository (AppDbContext context)
+    protected readonly AppDbContext _repository;
+
+    public Repository(AppDbContext repository)
     {
-        _context = context;
+        _repository = repository;
     }
 
     public IEnumerable<T> GetAll()
     {
-        return _context.Set<T>().ToList();
+        return _repository.Set<T>().AsNoTracking().ToList();
     }
-
-    public T? GetId(Expression<Func<T, bool>> predicate)
-    {
-        return _context.Set<T>().FirstOrDefault(predicate);
-    }
-
-    public T Create(T entity)
-    {
-        _context.Set<T>().Add(entity);
-        _context.SaveChanges();
-        return entity;
-    }
-
     public T Delete(T entity)
     {
-        _context.Set<T>().Remove(entity);
-        _context.SaveChanges();
+        _repository.Set<T>().Remove(entity);
         return entity;
     }
 
-  
+    public T? GetId(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
+    {
+        return _repository.Set<T>().FirstOrDefault(predicate);
+    }
+
     public T Update(T entity)
     {
-        _context.Set<T>().Entry(entity).State = EntityState.Modified;
-        _context.SaveChanges();
+        _repository.Set<T>().Update(entity);
         return entity;
     }
+    public T Create(T entity)
+    {
+        _repository.Set<T>().Add(entity);
+        return entity;
+    }
+
 }

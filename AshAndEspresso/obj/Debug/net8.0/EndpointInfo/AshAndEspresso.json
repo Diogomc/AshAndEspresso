@@ -157,7 +157,7 @@
         }
       }
     },
-    "/api/controller": {
+    "/api/Products": {
       "get": {
         "tags": [
           "Products"
@@ -224,7 +224,7 @@
         }
       }
     },
-    "/api/controller/{id}": {
+    "/api/Products/{id}": {
       "get": {
         "tags": [
           "Products"
@@ -362,9 +362,6 @@
           "categoryId": {
             "type": "integer",
             "format": "int32"
-          },
-          "categories": {
-            "$ref": "#/components/schemas/Category"
           }
         },
         "additionalProperties": false
