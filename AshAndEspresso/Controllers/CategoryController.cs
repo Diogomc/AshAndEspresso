@@ -1,4 +1,6 @@
-﻿using AshAndEspresso.Models;
+﻿using AshAndEspresso.DTOs.Entities;
+using AshAndEspresso.DTOs.Mappings;
+using AshAndEspresso.Models;
 using AshAndEspresso.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,47 +19,64 @@ namespace AshAndEspresso.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Category>> GetCategory()
+        public ActionResult<IEnumerable<CategoryDTO>> GetCategory()
         {
-            return _uow.CategoryRepository.GetAll().ToList();
+            var categories = _uow.CategoryRepository.GetAll().ToList();
+
+            var categoriesDTO = categories.ToCategoryDTOList();
+            return Ok(categoriesDTO);
         }
+
 
         [HttpGet("{id:int}", Name = "TakeCategory")]
-        public ActionResult GetCategoryId(int id)
+        public ActionResult<CategoryDTO> GetCategoryId(int id)
         {
-            var repository = _uow.CategoryRepository.GetId(c => c.CategoryId == id);
-            return Ok(repository);
-        }
-        [HttpPost]
-        public ActionResult Post(Category category)
-        {
-           var createCategory = _uow.CategoryRepository.Create(category);
-            _uow.Commit();
-            return new CreatedAtRouteResult("TakeCategory",
-                new { id = createCategory.CategoryId }, createCategory);
+            var categoryId = _uow.CategoryRepository.GetId(c => c.CategoryId == id);
 
-            
+            var categoryIdDTO = categoryId.ToCategoryDTO();
+            return Ok(categoryIdDTO);
         }
+
+        [HttpPost]
+        public ActionResult<CategoryDTO> Post(CategoryDTO categoryDto)
+        {
+            var category = categoryDto.ToCategory();
+
+            var createCategory = _uow.CategoryRepository.Create(category);
+            _uow.Commit();
+
+            var categoryToDto = createCategory.ToCategoryDTO();
+
+            return new CreatedAtRouteResult("TakeCategory",
+                new { id = categoryToDto.CategoryId }, categoryToDto);     
+        }
+
         [HttpDelete("{id:int}")]
-        public ActionResult Delete(int id)
+        public ActionResult<CategoryDTO> Delete(int id)
         {
             var getCategoryId = _uow.CategoryRepository.GetId(c => c.CategoryId == id);
-            _uow.CategoryRepository.Delete(getCategoryId);
+
+            var deleteCategory = _uow.CategoryRepository.Delete(getCategoryId);
             _uow.Commit();
 
-            return Ok(getCategoryId);
+            var deleteDto = deleteCategory.ToCategoryDTO();
+            return Ok(deleteDto);
 
         }
         [HttpPut("{id:int}")]
-        public ActionResult Put(int id, Category category)
+        public ActionResult<CategoryDTO> Put(int id, CategoryDTO categoryDto)
         {
-            if(id != category.CategoryId)
+            if(id != categoryDto.CategoryId)
             {
                 return NotFound("Category not found");
             }
-            _uow.CategoryRepository.Update(category);
+            var category = categoryDto.ToCategory();
+
+            var categoryUpdate = _uow.CategoryRepository.Update(category);
             _uow.Commit();
-            return Ok(category);
+
+            var categoryToDto = categoryUpdate.ToCategoryDTO();
+            return Ok(categoryToDto);
         }
     }
 }

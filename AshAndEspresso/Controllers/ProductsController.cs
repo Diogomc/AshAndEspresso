@@ -1,4 +1,5 @@
-﻿using AshAndEspresso.Models;
+﻿using AshAndEspresso.DTOs.Entities;
+using AshAndEspresso.Models;
 using AshAndEspresso.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
