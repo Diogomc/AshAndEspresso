@@ -14,8 +14,8 @@ public static class ProductDTOMappingExtensions
             ProductId = productDto.ProductId,
             Name = productDto.Name,
             Description = productDto.Description,
-            AvailableQuantity = productDto.AvailableQuantity,
             ImageUrl = productDto.ImageUrl,
+            AvailableQuantity = productDto.AvailableQuantity,
             Price = productDto.Price
         };
     }
@@ -28,23 +28,27 @@ public static class ProductDTOMappingExtensions
             ProductId = productDto.ProductId,
             Name = productDto.Name,
             Description = productDto.Description,
-            AvailableQuantity = productDto.AvailableQuantity,
             ImageUrl = productDto.ImageUrl,
+            AvailableQuantity = productDto.AvailableQuantity,
             Price = productDto.Price
         };
     }
-    public static IEnumerable<ProductDTO>? ToProductDTOList(this IEnumerable<Product> products)
-    {
-        if (products is null) return null;
 
-        return products.Select(productDto => new ProductDTO
+    public static IEnumerable<ProductDTO>? ToProductDTOList (this IEnumerable<Product> products)
+    {
+        if(products == null || !products.Any())
         {
-            ProductId = productDto.ProductId,
-            Name = productDto.Name,
-            Description = productDto.Description,
-            AvailableQuantity = productDto.AvailableQuantity,
-            ImageUrl = productDto.ImageUrl,
-            Price = productDto.Price
+            return new List<ProductDTO>();
+        }
+
+        return products.Select(product => new ProductDTO
+        {
+            ProductId = product.ProductId,
+            Name = product.Name,
+            Description = product.Description,
+            ImageUrl = product.ImageUrl,
+            AvailableQuantity = product.AvailableQuantity,
+            Price = product.Price
         }).ToList();
     }
 }
