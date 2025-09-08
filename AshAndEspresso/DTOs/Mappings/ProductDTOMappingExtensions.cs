@@ -5,18 +5,18 @@ namespace AshAndEspresso.DTOs.Mappings;
 
 public static class ProductDTOMappingExtensions
 {
-    public static ProductDTO? ToProductDTO(this ProductDTO productDto)
+    public static ProductDTO? ToProductDTO(this Product product)
     {
-        if (productDto is null) return null;
+        if (product is null) return null;
 
         return new ProductDTO
         {
-            ProductId = productDto.ProductId,
-            Name = productDto.Name,
-            Description = productDto.Description,
-            ImageUrl = productDto.ImageUrl,
-            AvailableQuantity = productDto.AvailableQuantity,
-            Price = productDto.Price
+            ProductId = product.ProductId,
+            Name = product.Name,
+            Description = product.Description,
+            ImageUrl = product.ImageUrl,
+            AvailableQuantity = product.AvailableQuantity,
+            Price = product.Price
         };
     }
     public static Product? ToProduct(this ProductDTO productDto)

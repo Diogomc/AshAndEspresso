@@ -1,4 +1,5 @@
 ﻿using AshAndEspresso.DTOs.Entities;
+using AshAndEspresso.DTOs.Mappings;
 using AshAndEspresso.Models;
 using AshAndEspresso.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -17,54 +18,62 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<Product>> Get()
+    public ActionResult<IEnumerable<ProductDTO>> Get()
     {
-        return _uow.ProductRepository.GetAll().ToList();
+        var products = _uow.ProductRepository.GetAll().ToList();
+        var productsDto = products.ToProductDTOList();
+
+        return Ok(productsDto);
     }
 
     [HttpGet("{id:int}", Name="TakeProduct")]
-    public ActionResult GetProductById(int id)
+    public ActionResult<ProductDTO> GetProductById(int id)
     {
         var product = _uow.ProductRepository.GetId(p => p.ProductId == id);
-        if(id != product.ProductId)
-        {
-            return NotFound("Product is not found");
-        }
-        return Ok(product);
+        var productDto = product.ToProductDTO();
+
+        return Ok(productDto);
     }
 
     [HttpPost]
-    public ActionResult Post(Product product)
+    public ActionResult<ProductDTO> Post(ProductDTO productDto)
     {
+        var product = productDto.ToProduct();
         var createProduct = _uow.ProductRepository.Create(product);
         _uow.Commit();
+
+        var productToDto = createProduct.ToProductDTO();
+
         return new CreatedAtRouteResult("TakeProduct",
-            new { id = product.ProductId }, createProduct);
+            new { id = productToDto.ProductId }, productToDto);
     }
 
     [HttpDelete("{id:int}")]
 
-    public ActionResult Delete(int id)
+    public ActionResult<ProductDTO> Delete(int id)
     {
         var getProductId = _uow.ProductRepository.GetId(p => p.ProductId == id);
-        if(id != getProductId.ProductId)
-        {
-            return NotFound("Product not found");
-        }
-        _uow.ProductRepository.Delete(getProductId);
+        
+        var productDelete = _uow.ProductRepository.Delete(getProductId);
         _uow.Commit();
-        return Ok(getProductId);
+
+        var productDto = productDelete.ToProductDTO();
+        return Ok(productDto);
     }
 
     [HttpPut("{id:int}")]
-    public ActionResult Put(int id, Product product)
+    public ActionResult<ProductDTO> Put(int id, ProductDTO productDto)
     {
+        var product = productDto.ToProduct();
+
         if(id != product.ProductId)
         {
             return NotFound("Product not found");
         }
-        _uow.ProductRepository.Update(product);
+        var productUpdate = _uow.ProductRepository.Update(product);
         _uow.Commit();
-        return Ok(product);
+
+        var productToDto = productUpdate.ToProductDTO();
+        return Ok(productToDto);
     }
 }

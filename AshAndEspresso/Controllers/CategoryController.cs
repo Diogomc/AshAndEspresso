@@ -32,8 +32,8 @@ namespace AshAndEspresso.Controllers
         public ActionResult<CategoryDTO> GetCategoryId(int id)
         {
             var categoryId = _uow.CategoryRepository.GetId(c => c.CategoryId == id);
-
             var categoryIdDTO = categoryId.ToCategoryDTO();
+
             return Ok(categoryIdDTO);
         }
 
