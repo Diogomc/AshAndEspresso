@@ -1,8 +1,10 @@
 ﻿using AshAndEspresso.DTOs.Entities;
 using AshAndEspresso.DTOs.Mappings;
 using AshAndEspresso.Models;
+using AshAndEspresso.Pagination;
 using AshAndEspresso.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace AshAndEspresso.Controllers;
 
@@ -34,6 +36,29 @@ public class ProductsController : ControllerBase
 
         return Ok(productDto);
     }
+    [HttpGet("Pagination")]
+   
+    public ActionResult<IEnumerable<ProductDTO>> Get([FromQuery] ProductsParameters productsParam)
+    {
+        var products = _uow.ProductRepository.GetProductsParam(productsParam);
+
+        var metadata = new
+        {
+            products.TotalCount,
+            products.TotalPages,
+            products.CurrentPage,
+            products.HasNext,
+            products.HasPrevious,
+            products.PageSize
+        };
+
+        Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+
+        var productsDto = products.ToProductDTOList();
+
+        return Ok(productsDto);
+    }
+
 
     [HttpPost]
     public ActionResult<ProductDTO> Post(ProductDTO productDto)
