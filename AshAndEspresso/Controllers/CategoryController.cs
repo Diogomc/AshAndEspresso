@@ -1,8 +1,10 @@
 ﻿using AshAndEspresso.DTOs.Entities;
 using AshAndEspresso.DTOs.Mappings;
 using AshAndEspresso.Models;
+using AshAndEspresso.Pagination;
 using AshAndEspresso.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 
 namespace AshAndEspresso.Controllers
@@ -36,7 +38,26 @@ namespace AshAndEspresso.Controllers
 
             return Ok(categoryIdDTO);
         }
+        [HttpGet("Pagination")]
+        public ActionResult<IEnumerable<CategoryDTO>> Get([FromQuery]CategoriesParameters categoriesParams)
+        {
+            var categories = _uow.CategoryRepository.GetCategoriesParam(categoriesParams);
 
+            var metadata = new
+            {
+                categories.TotalCount,
+                categories.TotalPages,
+                categories.CurrentPage,
+                categories.HasNext,
+                categories.HasPrevious,
+                categories.PageSize
+            };
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+
+            var categoriesDto = categories.ToCategoryDTOList();
+
+            return Ok(categoriesDto);
+        }
         [HttpPost]
         public ActionResult<CategoryDTO> Post(CategoryDTO categoryDto)
         {

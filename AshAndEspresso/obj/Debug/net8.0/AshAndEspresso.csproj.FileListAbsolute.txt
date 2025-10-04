@@ -171,3 +171,4 @@ C:\Users\Diogo\Desktop\AshAndEspresso\AshAndEspresso\AshAndEspresso\obj\Debug\ne
 C:\Users\Diogo\Desktop\AshAndEspresso\AshAndEspresso\AshAndEspresso\obj\Debug\net8.0\AshAndEspresso.pdb
 C:\Users\Diogo\Desktop\AshAndEspresso\AshAndEspresso\AshAndEspresso\obj\Debug\net8.0\AshAndEspresso.genruntimeconfig.cache
 C:\Users\Diogo\Desktop\AshAndEspresso\AshAndEspresso\AshAndEspresso\obj\Debug\net8.0\ref\AshAndEspresso.dll
+C:\Users\Diogo\Desktop\AshAndEspresso\AshAndEspresso\AshAndEspresso\bin\Debug\net8.0\Newtonsoft.Json.dll

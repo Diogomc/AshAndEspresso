@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AshAndEspresso")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+39e79da8c1d06fab67342c07bc273a8a5e87ee07")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d469adc6db7bb5ff3c494fb208b30366f15c06f7")]
 [assembly: System.Reflection.AssemblyProductAttribute("AshAndEspresso")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AshAndEspresso")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

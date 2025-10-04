@@ -9,7 +9,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[AshAndEspresso.Models.Category, AshAndEspresso, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[AshAndEspresso.DTOs.Entities.CategoryDTO, AshAndEspresso, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -28,12 +28,22 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "category",
-        "Type": "AshAndEspresso.Models.Category",
+        "Name": "categoryDto",
+        "Type": "AshAndEspresso.DTOs.Entities.CategoryDTO",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "AshAndEspresso.DTOs.Entities.CategoryDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "AshAndEspresso.Controllers.CategoryController",
@@ -49,7 +59,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [],
+    "ReturnTypes": [
+      {
+        "Type": "AshAndEspresso.DTOs.Entities.CategoryDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
     "EndpointName": "TakeCategory"
   },
   {
@@ -66,7 +86,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "AshAndEspresso.DTOs.Entities.CategoryDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "AshAndEspresso.Controllers.CategoryController",
@@ -82,12 +112,53 @@
         "IsRequired": true
       },
       {
-        "Name": "category",
-        "Type": "AshAndEspresso.Models.Category",
+        "Name": "categoryDto",
+        "Type": "AshAndEspresso.DTOs.Entities.CategoryDTO",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "AshAndEspresso.DTOs.Entities.CategoryDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "AshAndEspresso.Controllers.CategoryController",
+    "Method": "Get",
+    "RelativePath": "api/Category/Pagination",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[AshAndEspresso.DTOs.Entities.CategoryDTO, AshAndEspresso, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "AshAndEspresso.Controllers.ProductsController",
@@ -99,7 +170,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[AshAndEspresso.Models.Product, AshAndEspresso, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[AshAndEspresso.DTOs.Entities.ProductDTO, AshAndEspresso, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -118,12 +189,22 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "product",
-        "Type": "AshAndEspresso.Models.Product",
+        "Name": "productDto",
+        "Type": "AshAndEspresso.DTOs.Entities.ProductDTO",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "AshAndEspresso.DTOs.Entities.ProductDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "AshAndEspresso.Controllers.ProductsController",
@@ -139,7 +220,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [],
+    "ReturnTypes": [
+      {
+        "Type": "AshAndEspresso.DTOs.Entities.ProductDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
     "EndpointName": "TakeProduct"
   },
   {
@@ -156,7 +247,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "AshAndEspresso.DTOs.Entities.ProductDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "AshAndEspresso.Controllers.ProductsController",
@@ -172,11 +273,52 @@
         "IsRequired": true
       },
       {
-        "Name": "product",
-        "Type": "AshAndEspresso.Models.Product",
+        "Name": "productDto",
+        "Type": "AshAndEspresso.DTOs.Entities.ProductDTO",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "AshAndEspresso.DTOs.Entities.ProductDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "AshAndEspresso.Controllers.ProductsController",
+    "Method": "Get",
+    "RelativePath": "api/Products/Pagination",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[AshAndEspresso.DTOs.Entities.ProductDTO, AshAndEspresso, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]
